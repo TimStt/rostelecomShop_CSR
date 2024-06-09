@@ -1,6 +1,6 @@
 "use client";
 import Icon from "@/shared/ui/icon";
-import React, { useRef } from "react";
+import React, { useEffect, useRef } from "react";
 import cls from "classnames";
 import { useDispatch, useSelector } from "react-redux";
 
@@ -20,13 +20,26 @@ import { selectCurrentProductAddBusketState } from "@/shared/stores/current-prod
 import { Accardions } from "./ui/accardions";
 import { toggleStatePopupShare } from "./ui/popup-/store";
 import { BreadCrumb } from "@/shared/ui/breadcrumbs";
+import { getProductOne, selectIsProductOne } from "./store/slice";
+import { useRouter } from "next/router";
 
 const ProductCardPage = () => {
-  const dispatch = useDispatch();
-  const product = useSelector(selectCurrentProductAddBusketState);
+  const dispatch = useDispatch<AppDispatch>();
+  const { isGoods: product, loading } = useSelector(selectIsProductOne);
   const hasType = product?.isBestseller || product?.isNew;
   const selectedSize = useSelector(selectSelectedSize);
   const { currentBasketItem } = useBasketAction();
+  const router = useRouter();
+  const { id_product, category } = router.query;
+
+  useEffect(() => {
+    dispatch(
+      getProductOne({
+        id_product: id_product as string,
+        category: category as string,
+      })
+    );
+  }, [category, dispatch, id_product]);
 
   return (
     <section className={cls(style.root, "container")}>
@@ -128,7 +141,7 @@ const ProductCardPage = () => {
           </div>
         </article>
       ) : (
-        <Spinner size={30} />
+        !!loading && <Spinner size={30} />
       )}
     </section>
   );

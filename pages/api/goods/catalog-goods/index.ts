@@ -5,6 +5,8 @@ import { IGoodsList } from "@/shared/config/types/goods/types";
 import { getdbAndRequest } from "@/shared/lib/mongodb/utils/api-routes";
 import { IFilters } from "@/shared/config/types/filters";
 
+const logger = require("../../../../winston");
+
 export default async function handler(
   req: NextApiRequest,
   res: NextApiResponse
@@ -17,14 +19,16 @@ export default async function handler(
 
       const page = parseInt(req.query.page as string, 10) || 0;
       const limit = parseInt(req.query.limit as string, 10) || 0;
-      const price_min = parseInt(req.query.price_min as string, 10) || 0;
-      const price_max = parseInt(req.query.price_max as string, 10) || 0;
+      const price_min = parseInt(req.query.price_min as string, 10);
+      const price_max = parseInt(req.query.price_max as string, 10);
       const sizes = req.query?.sizes as string;
       const category = req.query?.category as string;
       const type = req.query?.type as string;
+      logger.info("type", type);
 
       let filter: IFilters = {};
-      category && category !== "undefined"
+      delete filter.$and;
+      !!category?.length && category !== "undefined"
         ? (filter.category = { $in: category.split(" ") })
         : null;
 
@@ -34,7 +38,7 @@ export default async function handler(
             $lte: parseInt(req.query.price_max as string, 10),
           })
         : null;
-      sizes !== "undefined" && sizes.length
+      sizes.length > 0 && sizes !== "undefined" && sizes !== "null"
         ? (filter.$and = sizes.split(",").map((size) => ({
             ["sizes"]: {
               ["$elemMatch"]: { [size.toLowerCase()]: true },
@@ -42,11 +46,13 @@ export default async function handler(
           })))
         : null;
 
-      type && type !== "undefined" ? (filter.type = type) : null;
+      !!type && type !== "undefined" ? (filter.type = type) : null;
 
       const sort =
         Object.fromEntries([(req.query?.sort as string).split(":")]) ||
         DEFAULT_SORT;
+
+      logger.info(filter);
 
       const { db } = await getdbAndRequest(clientPromise, null);
 

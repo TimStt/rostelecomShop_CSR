@@ -4,21 +4,24 @@ import { PayloadAction, createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import { HYDRATE } from "next-redux-wrapper";
 import { REHYDRATE } from "redux-persist";
 
-// export const goodsfetch = createAsyncThunk("goods/fetchGoodsGet", async () => {
-//   const { data: goodsHits } = await apiInstance.get("/api/goods/hits");
-//   const { data: goodsNew } = await apiInstance.get("/api/goods/new");
+export const getHitsAndNew = createAsyncThunk(
+  "goods/fetchGoodsGet",
+  async () => {
+    const { data: goodsHits } = await apiInstance.get("/api/goods/hits");
+    const { data: goodsNew } = await apiInstance.get("/api/goods/new");
 
-//   return [...goodsHits, ...goodsNew];
-// });
+    return [...goodsHits, ...goodsNew];
+  }
+);
 
 export interface typeState {
   isGoods: IGoodsList | [];
-  getStatus: "loading" | "success" | "error";
+  loading: boolean;
 }
 
 const initialState: typeState = {
   isGoods: [],
-  getStatus: "loading",
+  loading: false,
 };
 
 export const goodsHitsAndNewSlice = createSlice({
@@ -30,14 +33,27 @@ export const goodsHitsAndNewSlice = createSlice({
     },
   },
   extraReducers: (builder) => {
-    builder.addCase<typeof HYDRATE, PayloadAction<RootState, typeof HYDRATE>>(
-      HYDRATE,
-      (state, { payload }) => {
-        if (payload.goodsHitsAndNew) {
-          state.isGoods = payload.goodsHitsAndNew.isGoods;
+    builder
+      .addCase<typeof HYDRATE, PayloadAction<RootState, typeof HYDRATE>>(
+        HYDRATE,
+        (state, { payload }) => {
+          if (payload.goodsHitsAndNew) {
+            state.isGoods = payload.goodsHitsAndNew.isGoods;
+          }
         }
-      }
-    );
+      )
+      .addCase(getHitsAndNew.pending, (state) => {
+        state.loading = true;
+      })
+      .addCase(getHitsAndNew.fulfilled, (state, action) => {
+        state.loading = false;
+        state.isGoods = action.payload;
+      })
+      .addCase(getHitsAndNew.rejected, (state) => {
+        state.loading = false;
+        state.isGoods = [];
+      });
+
     // .addCase(REHYDRATE, (state, action) => {
 
     //     state.isGoods = action.payload.goodsHitsAndNew.isGoods;
@@ -46,8 +62,7 @@ export const goodsHitsAndNewSlice = createSlice({
   },
 });
 
-export const selectIsGoods = (state: RootState) =>
-  state.goodsHitsAndNew.isGoods;
+export const selectIsHitsAndNew = (state: RootState) => state.goodsHitsAndNew;
 
 export const { getGoodsSave } = goodsHitsAndNewSlice.actions;
 export default goodsHitsAndNewSlice.reducer;

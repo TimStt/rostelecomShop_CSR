@@ -21,48 +21,48 @@ import { IfilterState } from "@/shared/config/types/filters";
 
 export default CatalogMain;
 
-export const getServerSideProps: GetServerSideProps =
-  wrapper.getServerSideProps(({ dispatch, getState }) => async (context) => {
-    const limitGoods = getState().goodsCatalog.limitPage;
-    const { page, sort, price_min, price_max, sizes } =
-      context.query as unknown as IfilterState;
+// export const getServerSideProps: GetServerSideProps =
+//   wrapper.getServerSideProps(({ dispatch, getState }) => async (context) => {
+//     const limitGoods = getState().goodsCatalog.limitPage;
+//     const { page, sort, price_min, price_max, sizes } =
+//       context.query as unknown as IfilterState;
 
-    if (price_min && +price_min > +price_max) {
-      return {
-        redirect: {
-          destination: `/catalog?price_min=${price_max}&price_max=${price_min}`,
-          permanent: false,
-        },
-      };
-    }
-    const filterQuery = new URLSearchParams({
-      page: page,
-      sort: sort,
-      price_min: price_min,
-      price_max: price_max,
-      sizes: sizes,
+//     if (price_min && +price_min > +price_max) {
+//       return {
+//         redirect: {
+//           destination: `/catalog?price_min=${price_max}&price_max=${price_min}`,
+//           permanent: false,
+//         },
+//       };
+//     }
+//     const filterQuery = new URLSearchParams({
+//       page: page,
+//       sort: sort,
+//       price_min: price_min,
+//       price_max: price_max,
+//       sizes: sizes,
 
-      limit: limitGoods.toString(),
-    }).toString();
-    try {
-      // const limitGoods = 12;
-      dispatch(setLoadingCatalog(true));
+//       limit: limitGoods.toString(),
+//     }).toString();
+//     try {
+//       // const limitGoods = 12;
+//       dispatch(setLoadingCatalog(true));
 
-      const { data: goods } = await apiInstance.get(
-        `/api/goods/catalog-goods?${filterQuery}`
-      );
+//       const { data: goods } = await apiInstance.get(
+//         `/api/goods/catalog-goods?${filterQuery}`
+//       );
 
-      dispatch(getGoodsSave(goods.data));
-      dispatch(getGoodsSaveCount(goods.count));
-      return {
-        props: {},
-      };
-    } catch (error) {
-      console.error(error);
-      return {
-        props: {},
-      };
-    } finally {
-      dispatch(setLoadingCatalog(false));
-    }
-  });
+//       dispatch(getGoodsSave(goods.data));
+//       dispatch(getGoodsSaveCount(goods.count));
+//       return {
+//         props: {},
+//       };
+//     } catch (error) {
+//       console.error(error);
+//       return {
+//         props: {},
+//       };
+//     } finally {
+//       dispatch(setLoadingCatalog(false));
+//     }
+//   });

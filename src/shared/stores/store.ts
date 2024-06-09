@@ -43,6 +43,7 @@ import { menuModalSlice } from "@/shared/stores/menu-catalog-modal";
 import { m } from "framer-motion";
 import { currentProductAddBusketSlice } from "./current-product-add-busket";
 import { popupShareSlice } from "@/widgets/product-card-page/ui/popup-/store";
+import { productOneSlice } from "@/widgets/product-card-page/store/slice";
 
 // ...
 
@@ -74,6 +75,7 @@ const reducer = combineReducers({
   menuModal: menuModalSlice.reducer,
   currentProductAddBusket: currentProductAddBusketSlice.reducer,
   popupShare: popupShareSlice.reducer,
+  product: productOneSlice.reducer,
 });
 
 // const parsisReducer = persistReducer(parsistConfig, reducer);

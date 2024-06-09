@@ -6,8 +6,8 @@ import Filter from "./ui/filter";
 import { Card } from "@/shared/ui/card";
 // import CatalogCards from "@/features/catalog-cards";
 import { BreadCrumb } from "@/shared/ui/breadcrumbs";
-import { useSelector } from "react-redux";
-import { selectIsCatalag } from "./store/slice";
+import { useDispatch, useSelector } from "react-redux";
+import { getCatalogProduct, selectIsCatalag } from "./store/slice";
 
 import Pagination from "./ui/pagination";
 
@@ -22,12 +22,32 @@ import { PulseLoader } from "@/shared/ui/pulse-loader";
 import EmptyPageContent from "@/shared/ui/empty-page-content/ui";
 
 import { useUrlParams } from "@/shared/utils/url";
+import { useRouter } from "next/router";
 
 const CatalogMain = () => {
   const { params } = useUrlParams();
 
-  const category = params.get("category");
+  const price_min = params.get("price_min");
+  const price_max = params.get("price_max");
+
+  const dispatch = useDispatch<AppDispatch>();
   const { isGoods, count, limitPage, loading } = useSelector(selectIsCatalag);
+  const router = useRouter();
+  const { category } = router.query;
+  const filterQuery = new URLSearchParams({
+    page: params.get("page") || "1",
+    sort: params.get("sort") as string,
+    price_min: price_min as string,
+    price_max: price_max as string,
+    category: category as string,
+    sizes: params.get("sizes") as string,
+
+    limit: limitPage.toString(),
+  }).toString();
+
+  useEffect(() => {
+    dispatch(getCatalogProduct(filterQuery));
+  }, [dispatch, filterQuery]);
 
   return (
     <TransitionWrapper>
@@ -43,7 +63,7 @@ const CatalogMain = () => {
         </div>
         <Filter />
 
-        {isGoods.length ? (
+        {loading ? (
           <>
             {" "}
             <div className={style.root__cards}>
@@ -62,12 +82,30 @@ const CatalogMain = () => {
             <Pagination />
           </>
         ) : (
-          <EmptyPageContent
-            title={"Ойй...😢 <br/> Кажется кто-то украл все товары"}
-            subtitle={"К сожалению, не нашлось товаров по вашему запросу"}
-            buttonText={"Попробовать другой запрос"}
-            backgroundText={""}
-          />
+          <>
+            <>
+              {isGoods.length ? (
+                <>
+                  <div className={style.root__cards}>
+                    {isGoods.map((product) => (
+                      <Card
+                        key={`${product._id} ${product.type}`}
+                        {...product}
+                      />
+                    ))}
+                  </div>
+                  <Pagination />
+                </>
+              ) : (
+                <EmptyPageContent
+                  title={"Ойй...😢 <br/> Кажется кто-то украл все товары"}
+                  subtitle={"К сожалению, не нашлось товаров по вашему запросу"}
+                  buttonText={"Попробовать другой запрос"}
+                  backgroundText={""}
+                />
+              )}
+            </>
+          </>
         )}
       </section>
     </TransitionWrapper>

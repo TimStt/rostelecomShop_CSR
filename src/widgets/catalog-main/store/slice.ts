@@ -1,4 +1,5 @@
 import { apiInstance } from "@/shared/config/api/apiinstance";
+import { IfilterState } from "@/shared/config/types/filters";
 import { IGoodsList } from "@/shared/config/types/goods/types";
 import {
   PayloadAction,
@@ -11,12 +12,16 @@ import { set } from "mongoose";
 import { HYDRATE } from "next-redux-wrapper";
 import { REHYDRATE } from "redux-persist";
 
-export const goodsfetch = createAsyncThunk("goods/fetchGoodsGet", async () => {
-  const { data: goodsHits } = await apiInstance.get("/api/goods/hits");
-  const { data: goodsNew } = await apiInstance.get("/api/goods/new");
+export const getCatalogProduct = createAsyncThunk(
+  "goods/fetchGoodsGet",
+  async (filterQuery: string) => {
+    const { data: goods } = await apiInstance.get(
+      `/api/goods/catalog-goods?${filterQuery}`
+    );
 
-  return [...goodsHits, ...goodsNew];
-});
+    return goods;
+  }
+);
 
 export interface typeState {
   isGoods: IGoodsList | [];
@@ -57,6 +62,19 @@ export const goodsCatalogSlice = createSlice({
         }
       }
     );
+    builder
+      .addCase(getCatalogProduct.pending, (state) => {
+        state.loading = true;
+      })
+      .addCase(getCatalogProduct.fulfilled, (state, action) => {
+        state.loading = false;
+        state.isGoods = action.payload.data;
+        state.count = action.payload.count;
+      })
+      .addCase(getCatalogProduct.rejected, (state) => {
+        state.loading = false;
+        state.isGoods = [];
+      });
     // .addCase(REHYDRATE, (state, action) => {
 
     //     state.isGoods = action.payload.goodsHitsAndNew.isGoods;
