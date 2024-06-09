@@ -1,0 +1,42 @@
+@import "../../../../shared/other-style/mixins";
+
+.root {
+  --bgImage: var(--gradient-circle);
+
+  color: var(--color-gray-light);
+
+  @include flex-center-beetwen;
+  &__link {
+    @include flex-gap(25px);
+    align-items: center;
+    width: 50%;
+
+    label {
+      cursor: pointer;
+      width: 50%;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+      text-align: center;
+    }
+
+    img {
+      object-fit: contain;
+      background: var(--bgImage);
+      transition-duration: var(--duration);
+      transition-property: transform;
+      transform: scale(1);
+    }
+  }
+  &:hover img {
+    transform: scale(1.05);
+  }
+
+  span {
+    width: 20%;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    text-align: center;
+  }
+}

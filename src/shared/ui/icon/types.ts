@@ -1,0 +1,11 @@
+import { SVGProps } from "react";
+import type { SpritesMap } from "./sprite.h";
+
+export type IconName = {
+  [Key in keyof SpritesMap]: `${Key}/${SpritesMap[Key]}`;
+}[keyof SpritesMap];
+
+export interface IconProps
+  extends Omit<SVGProps<SVGSVGElement>, "name" | "type"> {
+  name: IconName;
+}

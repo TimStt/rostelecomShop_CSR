@@ -1,0 +1,98 @@
+.image {
+  display: block;
+  grid-row: span 2;
+  width: 96px;
+  height: 96px;
+  max-width: max-content;
+  background: var(--gradient-circle);
+  padding: 4.2px 6.8px;
+}
+.image img {
+  object-fit: contain;
+  height: 100%;
+  object-position: center;
+}
+
+.price {
+  font-size: 16px;
+  font-weight: 500;
+  line-height: 24px;
+}
+
+.title {
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 24px;
+  max-width: 130px;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  height: max-content;
+}
+
+.icon {
+  width: 25px;
+  aspect-ratio: 1;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+}
+.icon svg {
+  display: block;
+  width: 12px;
+  height: 12px;
+  fill: var(--color-gray-6);
+}
+.icon.minus svg {
+  width: 12px;
+  height: 1.5px;
+}
+.icon.delete {
+  width: 30px;
+}
+.icon.delete svg {
+  width: 16px;
+  height: 18px;
+}
+.icon.plus svg {
+  width: 12px;
+  height: 12px;
+}
+.icon:active {
+  background-color: var(--color-white-opacity6);
+}
+@media (hover: hover) {
+  .icon:hover {
+    background-color: var(--color-white-opacity6);
+  }
+}
+
+.quantity {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 80px !important;
+  height: 28px !important;
+  border-radius: 16px;
+  background-color: var(--color-gray-4);
+  padding-inline: 3px !important;
+}
+.quantity span {
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 20px;
+}
+
+.block {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  max-width: 188px;
+  width: 100%;
+}
+.block:last-child {
+  margin-top: auto;
+  align-items: center;
+}/*# sourceMappingURL=card-product.module.css.map */

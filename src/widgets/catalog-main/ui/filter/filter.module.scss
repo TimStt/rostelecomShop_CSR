@@ -1,0 +1,10 @@
+@import "../../../../shared/other-style/mixins";
+.root {
+  &__inner {
+    @include flex-center-beetwen;
+    margin-bottom: 30px;
+    flex-wrap: wrap;
+    gap: 21px;
+  }
+  margin-bottom: 40px;
+}

@@ -1,0 +1,201 @@
+@import "../../../shared/other-style/mixins",
+  "../../../../shared/other-style/adaptive";
+
+.root {
+  --widthButtonPopup: 38px;
+  --widthSlide: 469px;
+  position: absolute !important;
+  right: 15%;
+  transform: translateY(-50%);
+  top: 50%;
+  overflow: visible !important;
+  // @include tablet {
+  //   --widthSlide: 310px;
+  // }
+  // @include tablet {
+  //   --widthSlide: 250px;
+  // }
+
+  @media screen and (max-width: 700px) {
+    position: relative !important;
+    transform: none;
+    right: auto;
+    top: auto;
+
+    @include tablet {
+      --widthSlide: 310px;
+      margin-right: calc(var(--widthSlide) / 2.4);
+    }
+    @include mobile {
+      --widthSlide: 230px;
+      margin-right: calc(var(--widthSlide) / 2.4);
+    }
+    margin-right: calc(var(--widthSlide) / 2.4);
+  }
+  &__slide {
+    position: relative;
+
+    @include tablet {
+      --widthSlide: 310px;
+      width: var(--widthSlide);
+    }
+    @include mobile {
+      --widthSlide: 230px;
+      width: var(--widthSlide);
+    }
+    width: (var(--widthSlide)) !important;
+    margin-right: calc(var(--widthSlide) / 2 * -1) !important;
+  }
+
+  &__slideNext {
+    transform-origin: 0% 86%;
+    // margin-left: calc(-50% + var(--widthSlide) / 2);
+  }
+  &__slidePrev {
+    transform-origin: 100% 86%;
+    // margin-right: calc(-50% + var(--widthSlide) / 2);
+  }
+  //  &__slide + &__slide {
+  //   margin-left: calc(var(--widthSlide) / 2 * -1);
+  // }
+
+  // &__image {
+  //   width: 100%;
+  //   height: 100%;
+  // }
+
+  &__image {
+    object-fit: contain;
+    width: auto;
+    // height: 100%;
+  }
+
+  &__info {
+    position: absolute;
+    top: 50%;
+    right: 65%;
+    display: flex;
+    gap: 20px;
+    flex-direction: column;
+    align-items: flex-end;
+
+    @media screen and (max-width: 700px) {
+      top: -8%;
+      right: 10%;
+      flex-direction: column-reverse;
+    }
+  }
+
+  &__button {
+    display: none;
+    cursor: pointer;
+    border-radius: 50%;
+
+    @include square(var(--widthButtonPopup));
+    background-color: var(--color-violet);
+
+    transition-property: background-color;
+    transition-duration: var(--duration);
+
+    &:after {
+      --widthButtonPopup: 48px;
+      content: "";
+      border: 1.5px solid var(--color-violet);
+      border-radius: 50%;
+      @include square(var(--widthButtonPopup));
+      position: absolute;
+    }
+
+    &.isVisible {
+      @include inline-flex-center;
+    }
+
+    svg {
+      display: block;
+      width: 18px;
+      height: 18px;
+      fill: var(--color-gray-light);
+    }
+    &:hover {
+      background-color: var(--color-violet-light);
+    }
+  }
+
+  &__popup {
+    --bgColorPopup: var(--color-blue-dark-2);
+    --widthPopup: 246px;
+    --heightPopup: 96px;
+
+    transition-property: transform;
+    transform: scale(0);
+
+    width: var(--widthPopup);
+    height: var(--heightPopup);
+
+    width: var(--widthPopup);
+
+    transition-duration: var(--duration);
+
+    border-radius: 12px;
+    background-color: var(--bgColorPopup);
+    transform-origin: top right;
+    &.isOpen {
+      transform: scaleY(1);
+    }
+
+    font-size: 16px;
+
+    @media screen and (max-width: 700px) {
+      position: relative;
+
+      transform-origin: bottom right;
+    }
+
+    &__wrapper {
+      padding: 12px;
+      @include flex-gap(8px);
+      position: relative;
+      --sizeDecorationTringle: 8px;
+      width: 100%;
+      height: 100%;
+      &::after {
+        content: "";
+        position: absolute;
+        display: block;
+        top: calc(-1 * var(--sizeDecorationTringle));
+        right: calc(
+          (
+            (var(--widthButtonPopup) / 2) - (var(--sizeDecorationTringle) * 2) +
+              (var(--sizeDecorationTringle))
+          )
+        );
+        border-left: var(--sizeDecorationTringle) solid transparent;
+        border-right: var(--sizeDecorationTringle) solid transparent;
+        border-bottom: var(--sizeDecorationTringle) solid var(--bgColorPopup);
+
+        @media screen and (max-width: 700px) {
+          border-top: var(--sizeDecorationTringle) solid var(--bgColorPopup);
+          bottom: calc(-1 * var(--sizeDecorationTringle));
+          border-bottom: none;
+
+          top: auto;
+        }
+      }
+    }
+
+    &__title {
+      font-size: inherit;
+      font-weight: 700;
+      line-height: 20px;
+
+      margin-bottom: 6px;
+    }
+
+    &__price {
+      font-size: inherit;
+      font-weight: 400;
+      line-height: 24px;
+      color: var(--color-emerald);
+    }
+  }
+}

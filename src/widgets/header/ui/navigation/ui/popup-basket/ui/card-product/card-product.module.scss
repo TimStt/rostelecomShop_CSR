@@ -1,0 +1,93 @@
+@import "../../../../../../../../shared/other-style/mixins";
+
+.image {
+  display: block;
+  grid-row: span 2;
+  width: 96px;
+  height: 96px;
+  max-width: max-content;
+  background: var(--gradient-circle);
+  padding: 4.2px 6.8px;
+
+  img {
+    object-fit: contain;
+
+    height: 100%;
+    object-position: center;
+  }
+}
+.price {
+  font-size: 16px;
+  font-weight: 500;
+  line-height: 24px;
+}
+.title {
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 24px;
+  max-width: 130px;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  height: max-content;
+}
+.icon {
+  @include square(25px);
+  @include inline-flex-center;
+  border-radius: 50%;
+  svg {
+    display: block;
+    width: 12px;
+    height: 12px;
+    fill: var(--color-gray-6);
+  }
+
+  &.minus svg {
+    width: 12px;
+    height: 1.5px;
+  }
+
+  &.delete {
+    width: 30px;
+    svg {
+      width: 16px;
+      height: 18px;
+    }
+  }
+
+  &.plus svg {
+    width: 12px;
+    height: 12px;
+  }
+
+  @include hover-btn(var(--color-white-opacity6));
+}
+
+.quantity {
+  @include flex-center-beetwen;
+  width: 80px !important;
+  height: 28px !important;
+  border-radius: 16px;
+  background-color: var(--color-gray-4);
+  padding-inline: 3px !important;
+
+  span {
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 20px;
+  }
+}
+
+.block {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  max-width: 188px;
+  width: 100%;
+
+  &:last-child {
+    margin-top: auto;
+    align-items: center;
+  }
+}

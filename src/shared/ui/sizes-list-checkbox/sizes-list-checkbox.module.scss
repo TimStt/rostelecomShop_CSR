@@ -1,0 +1,36 @@
+@import "../../other-style/adaptive";
+@import "../../other-style/mixins";
+
+.root {
+  @include flex-gap(12px);
+
+  &__item {
+    @include inline-flex-center;
+    position: relative;
+    width: 59px;
+    height: 32px;
+    cursor: pointer;
+    border-radius: 24px;
+    transition-duration: var(--duration);
+    transition-property: background-color;
+    background-color: var(--color-gray-dark);
+
+    span {
+      font-size: 14px;
+      font-weight: 400;
+      line-height: 20px;
+      color: var(--color-gray-light);
+    }
+
+    &.isSelected,
+    &:hover {
+      background-color: var(--color-light-violet);
+    }
+
+    &[disabled] {
+      opacity: 0.5;
+      cursor: not-allowed;
+      pointer-events: none;
+    }
+  }
+}

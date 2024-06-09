@@ -1,0 +1,86 @@
+@import "../../../../shared/other-style/mixins";
+
+.root {
+  max-width: 616px;
+  width: 100%;
+  padding: 15px;
+  background-color: var(--color-gray-4);
+
+  &::backdrop {
+    box-shadow: 0 2px 8px 1px rgba(0, 42, 81, 0.1);
+  }
+
+  &__wrapper {
+    position: relative;
+  }
+
+  &__title {
+    font-size: 22px;
+    text-transform: uppercase;
+    font-weight: 600;
+    margin-bottom: 10px;
+    color: var(--color-gray-light);
+  }
+
+  &__socials {
+    @include flex-gap(9px);
+
+    &__button {
+      width: 32px;
+      height: 32px;
+      @include inline-flex-center;
+      border-radius: 50%;
+      transition-duration: var(--duration);
+      transition-duration: background-color;
+      cursor: pointer;
+
+      svg {
+        fill: var(--color-gray-light);
+      }
+
+      &:hover {
+        background-color: var(--color-violet-light) !important;
+      }
+
+      &.vk {
+        background-color: var(--color-vk);
+
+        svg {
+          width: 19px;
+          height: 13px;
+        }
+      }
+
+      &.telegram {
+        background-color: var(--color-telegram);
+        svg {
+          width: 22px;
+          height: 15px;
+        }
+      }
+
+      &:hover {
+        background-color: var(--color-gray-light);
+      }
+    }
+  }
+
+  &__close {
+    display: block;
+    position: absolute;
+    top: 0px;
+    right: 0px;
+    width: 40px;
+    height: 40px;
+    @include inline-flex-center;
+    border-radius: 50%;
+    background-color: var(--color-white-opacity10);
+    cursor: pointer;
+
+    svg {
+      width: 16px;
+      height: 16px;
+      fill: var(--color-gray-light);
+    }
+  }
+}

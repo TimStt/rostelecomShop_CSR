@@ -1,0 +1,164 @@
+@import "../../../shared/other-style/adaptive";
+@import "../../../shared/other-style/mixins";
+
+.root {
+  --hoverColor: var(--color-light-violet);
+  --boxShadowModal: 0 32px 32px 0 rgba(0, 0, 0, 0.2),
+    0 0 32px 0 rgba(0, 0, 0, 0.1);
+
+  width: 992px;
+  height: 568px;
+
+  padding: 32px;
+  padding-left: 0px;
+  &__body {
+    @include flex-column;
+  }
+  &__image {
+    flex: 1;
+    object-fit: contain;
+  }
+
+  &__wrapper {
+    position: relative;
+    width: 100%;
+    height: 100%;
+
+    @include flex-gap(32px);
+    align-items: center;
+  }
+  &__close {
+    margin-left: auto;
+    cursor: pointer;
+    padding: 10px;
+    &:hover,
+    &:active {
+      svg {
+        fill: var(--hoverColor);
+      }
+    }
+
+    svg {
+      display: block;
+      width: 24px;
+      height: 24px;
+      fill: var(--color-gray-light);
+    }
+  }
+
+  &__header {
+    @include flex-center-beetwen;
+    margin-bottom: 23px;
+  }
+
+  &__content {
+    max-width: 448px;
+    width: 100%;
+    height: 100%;
+  }
+  &__sizes {
+    @include flex-column;
+    gap: 12px;
+  }
+  &__composition,
+  &__color {
+    margin-bottom: 24px;
+  }
+
+  &__quantity {
+    margin-bottom: 12px;
+  }
+
+  &__addToBasketAndCounter {
+    margin-bottom: 71px;
+  }
+
+  &__block {
+    @include flex-center-beetwen;
+
+    &__linkToTable {
+      color: var(--color-emerald);
+
+      background-color: transparent;
+
+      text-decoration: underline;
+      font-size: 14px;
+      font-weight: 400;
+      line-height: 20px;
+
+      text-decoration: underline;
+      transition-property: color;
+      transition-duration: var(--duration);
+
+      &:hover {
+        color: var(--color-green-1);
+      }
+    }
+
+    &__price {
+      color: var(--color-emerald);
+      font-size: 24px;
+      font-weight: 500;
+    }
+  }
+  &__panel {
+    @include flex-gap(10px);
+
+    margin-bottom: 9px;
+
+    &__button {
+      --duration: 0.2s;
+      @include square(32px);
+      border-radius: 50%;
+
+      @include inline-flex-center;
+      background-color: var(--color-main);
+      svg {
+        display: block;
+        transition-property: fill;
+        transition-duration: var(--duration);
+        width: 24px;
+        height: 24px;
+        fill: var(--color-white-1);
+      }
+
+      &:hover svg {
+        fill: var(--color-emerald);
+      }
+    }
+  }
+
+  &__stock {
+    margin-bottom: 24px;
+  }
+
+  &__text {
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 20px;
+    color: var(--color-gray-light);
+  }
+
+  &__title {
+    color: var(--color-white-1);
+    font-size: 22px;
+    font-weight: 700;
+  }
+
+  &__sizes {
+    margin-bottom: 28px;
+  }
+
+  &__link {
+    font-size: 16px;
+    font-weight: 500;
+    color: var(--color-light-violet);
+    transition-duration: var(--duration);
+    transition-property: color;
+    text-align: center;
+
+    &:hover {
+      color: var(--color-violet);
+    }
+  }
+}

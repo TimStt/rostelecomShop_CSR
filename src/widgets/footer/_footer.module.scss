@@ -1,0 +1,103 @@
+@import "../../shared/other-style/mixins";
+.root {
+  &__top {
+    background-color: var(--color-gray-4);
+
+    font-size: 16px;
+    font-weight: 400;
+    color: var(--color-gray-light);
+
+    &__logo {
+      width: 27%;
+    }
+
+    &__wrapper {
+      @include flex-center;
+      padding-block: 15px 30px;
+    }
+
+    &__contacts {
+      width: 26%;
+      @include flex-center-beetwen;
+
+      li {
+        @include flex-column;
+        gap: 12px;
+      }
+
+      a {
+        color: var(--color-gray-light);
+        transition-duration: var(--duration);
+        transition-property: color;
+
+        &:hover {
+          color: var(--color-light-violet);
+        }
+      }
+    }
+  }
+
+  &__socials {
+    @include flex-gap(32px);
+    width: 36%;
+    justify-content: flex-end;
+
+    &__item {
+      border: 2px solid var(--color-gray-5);
+
+      width: 48px;
+      height: 48px;
+      border-radius: 50%;
+
+      a {
+        height: 100%;
+        @include flex-center-center;
+      }
+
+      &.telegram svg {
+        width: 20px;
+        height: 18.01px;
+      }
+
+      &.vk svg {
+        width: 19.99px;
+        height: 12.67px;
+      }
+
+      &.youtube svg {
+        width: 20px;
+        height: 16px;
+      }
+      svg {
+        fill: var(--color-gray-light);
+      }
+    }
+  }
+
+  &__bottom {
+    gap: 20px;
+
+    background-color: var(--color-blue-dark-3);
+    font-size: 12px;
+    font-weight: 400;
+    line-height: 16px;
+    color: var(--color-gray-6);
+
+    &__wrapper {
+      display: flex;
+      align-items: start;
+      justify-content: space-between;
+      padding-block: 16px 23px;
+    }
+
+    &__copyright {
+      margin: 0;
+    }
+
+    &__policy {
+      a + a {
+        margin-left: 32px;
+      }
+    }
+  }
+}

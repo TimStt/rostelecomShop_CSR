@@ -1,0 +1,30 @@
+@import "../../other-style/adaptive";
+@import "../../other-style/mixins";
+
+.root {
+  @include flex-gap(8.5px);
+
+  a {
+    font-size: 13px;
+    font-weight: 500;
+    line-height: 20px;
+  }
+  a + a {
+    @include flex-gap(8.5px);
+    align-items: center;
+    &::before {
+      content: "";
+      display: block;
+      width: 3px;
+      height: 3px;
+      border-radius: 50%;
+      background-color: var(--color-white-opacity90);
+    }
+  }
+
+  a:last-child {
+    color: var(--color-white-opacity40);
+    cursor: none;
+    pointer-events: none;
+  }
+}

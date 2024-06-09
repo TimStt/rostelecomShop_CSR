@@ -1,0 +1,25 @@
+import { motion } from "framer-motion";
+import React, { forwardRef } from "react";
+import style from "./modal-motion.module.scss";
+import { IModel } from "../modal/types";
+import cls from "classnames";
+import { motionSettingsVisibleDisplay } from "./motion-settings";
+
+const ModalMotion = forwardRef<HTMLDialogElement, IModel>(
+  ({ className, children, state, ...props }, ref) => {
+    const styleAnimation = motionSettingsVisibleDisplay(state as boolean);
+    return (
+      <motion.dialog
+        className={cls(style.root, className)}
+        ref={ref}
+        {...styleAnimation}
+      >
+        {children}
+      </motion.dialog>
+    );
+  }
+);
+
+ModalMotion.displayName = "ModalMotion";
+
+export default ModalMotion;

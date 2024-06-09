@@ -1,0 +1,47 @@
+@import "../../../../other-style/mixins";
+@import "../../../../other-style/adaptive";
+
+.root {
+  margin: auto;
+  margin-bottom: 20px;
+  border-spacing: 1px;
+  &__header {
+    &__row {
+      background-color: var(--color-black-2);
+    }
+    th {
+      @include px-to-rem(padding, 15);
+    }
+  }
+
+  th,
+  td {
+    color: var(--color-white-opacity90);
+  }
+  &__body {
+    &__row {
+      cursor: pointer;
+      transition-property: background-color;
+      transition-duration: var(--duration);
+      position: relative;
+      &:hover,
+      &.isActive {
+        background-color: var(--color-violet);
+      }
+      &[data-disabled="true"] {
+        cursor: not-allowed;
+        pointer-events: none;
+        opacity: 0.5;
+
+        td {
+          color: var(--color-white-opacity20);
+        }
+      }
+    }
+
+    td {
+      @include px-to-rem(padding, 10);
+      text-align: center;
+    }
+  }
+}

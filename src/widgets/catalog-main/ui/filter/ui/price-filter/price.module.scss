@@ -1,0 +1,135 @@
+@import "../../../../../../shared/other-style/mixins";
+
+.root {
+  --borderShadow: 0 32px 32px 0 rgba(0, 0, 0, 0.2),
+    0 0 32px 0 rgba(0, 0, 0, 0.1);
+
+  --widthInput: 123px;
+  --heightInput: 31px;
+  position: relative;
+  transition-property: height;
+  transition-duration: var(--duration);
+
+  &__button {
+    @include flex-center-beetwen;
+    padding: 4px 16px;
+    height: 48px;
+    min-width: 280px;
+    border-radius: 24px;
+    background-color: var(--color-black-2);
+    color: var(--color-white-opacity60);
+    text-align: start;
+    cursor: pointer;
+
+    &__text {
+      @include flex-column;
+    }
+  }
+  &__placholder {
+    color: var(--color-white-opacity60);
+    font-size: 16px;
+
+    transition-property: color, transform, font-size;
+    transition-duration: var(--duration);
+
+    &.isNotEmpty {
+      color: var(--color-light-violet);
+      font-size: 12px;
+      top: 4px;
+    }
+  }
+
+  &__selected {
+    color: var(--color-white-opacity90);
+  }
+
+  &__icon {
+    transform: rotate(-90deg);
+    width: 12px;
+    height: 12px;
+
+    fill: var(--color-white-opacity40);
+
+    transition-property: transform;
+    transition-duration: var(--duration);
+
+    &.isRotate {
+      transform: rotate(-270deg);
+    }
+  }
+
+  &__dropdown {
+    position: absolute;
+    top: calc(100% + 4px);
+
+    border-radius: 16px;
+    background: var(--color-blue-dark-2);
+    box-shadow: var(--borderShadow);
+    padding: 16px 12px;
+
+    transform-origin: top;
+    transform: scale(0);
+    transition-property: transform;
+    transition-duration: var(--duration);
+    z-index: 2;
+    &.isOpen {
+      transform: scaleY(1);
+    }
+  }
+
+  &__inputGroup {
+    @include flex-gap(8px);
+    margin-bottom: 16px;
+  }
+
+  &__input {
+    width: var(--widthInput);
+    height: var(--heightInput);
+    padding-inline: 14px 4px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    border: 1px solid transparent;
+    border-radius: 16px;
+    background-color: var(--color-white-opacity6);
+    outline: none;
+    overflow: hidden;
+    color: var(--color-white-opacity90);
+    font-size: 14px;
+
+    &.isError {
+      border: 1px solid var(--color-red);
+    }
+  }
+
+  &__buttonPush {
+    border-radius: 24px;
+    background-color: var(--color-light-violet);
+    height: 32px;
+    color: var(--color-white);
+    font-size: 14px;
+    font-weight: 500;
+    transition-duration: var(--duration);
+    transition-property: background-color;
+    width: 100%;
+
+    &:hover {
+      background-color: var(--color-violet);
+
+      cursor: pointer;
+    }
+
+    &:disabled {
+      opacity: 0.5;
+      pointer-events: none;
+      cursor: not-allowed;
+    }
+  }
+
+  &__error {
+    display: inline-block;
+    color: var(--color-red);
+    font-size: 14px;
+    margin-bottom: 10px;
+  }
+}

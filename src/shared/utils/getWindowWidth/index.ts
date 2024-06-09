@@ -1,0 +1,1 @@
+export { getWindowWidth } from "./getWindowWidth";

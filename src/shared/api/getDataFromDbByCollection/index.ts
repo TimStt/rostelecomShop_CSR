@@ -1,0 +1,1 @@
+export { getDataFromDbByCollection } from "./getDataFromDbByCollection";

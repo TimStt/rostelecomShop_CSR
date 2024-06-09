@@ -1,0 +1,23 @@
+@import "../../../../../shared/other-style/mixins",
+  "../../../../../shared/other-style/adaptive";
+
+.root {
+  display: block;
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 20px;
+  position: absolute;
+  top: 16px;
+  left: 16px;
+  padding-inline: 8px;
+
+  &__new {
+    color: var(--color-white);
+    background-color: var(--color-orange);
+  }
+
+  &__hit {
+    color: var(--color-blue-dark-3);
+    background-color: var(--color-emerald);
+  }
+}

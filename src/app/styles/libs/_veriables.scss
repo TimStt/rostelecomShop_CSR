@@ -1,0 +1,96 @@
+:root {
+  // размеры контейнера
+  --container-max-width: 1527px;
+  --container-padding-x: 20px;
+  --color-gray-dark: #3f4752;
+  --height-header: 80px;
+  --font-size-main: 16px;
+  --color-black-2: #2a323f;
+  --color-blue-dark-6: #2e344d;
+  --color-gray-7: #4e5d77;
+  --color-light-violet: #9466ff;
+  --color-violet: #7700ff;
+  --color-light-viole-opacity10: #9466ff1a;
+  --color-gray-light: #e8e9ea;
+  --color-gray-light-2: #81a4b0;
+  --color-white-opacity6: #ffffff0f;
+  --color-white-opacity90: #ffffffe6;
+  --color-white-opacity60: #ffffff99;
+  --color-white-opacity20: #ffffff33;
+  --color-white-opacity40: #ffffff66;
+  --color-white-opacity10: #ffffff1a;
+  --color-gray-3: #3a4559;
+  --color-gray-4: #333a47;
+  --color-gray-5: #565c66;
+  --color-gray-9: #3f4652;
+  --color-black-opacity30: #00000020;
+  --color-blue-dark-1: #2a323f;
+  --color-blue-dark-1-opacity10: #2a323f1a;
+  --color-gray-6: #a5a8ad;
+  --color-main-opacity0: #1d253300;
+  --gradient-circle: radial-gradient(
+      53.01% 53% at 50% 47%,
+      var(--color-gray-7),
+      var(--color-blue-dark-1-opacity10) 100%
+    ),
+    rgb(42, 50, 63);
+  --gradient-circle-1: radial-gradient(
+    52.53% 52.53% at 50% 47.47%,
+    var(--color-gray-4) 0,
+    var(--color-main-opacity0) 100%
+  );
+  --color-white-opacity90: #ffffffe6;
+  --color-gray-light-3: #797e8b;
+
+  --color-white-opacity66: #ffffff66;
+  --color-green-dark: #344d2e;
+  --color-blue-dark-2: #3d4555;
+
+  --color-vk: #506897;
+  --color-telegram: #0088cc;
+
+  --color-green: #26da72;
+  --color-green-1: #14edaa;
+  --color-green-2-opacity93: #00ffaaed;
+  --color-black-opacity40: #10182866;
+  --color-black-opacity55: #1018288c;
+  --color-white-1: #f1f3f5;
+  --color-emerald: #16d9a6;
+  --color-blue-dark-5: #2e2e4c;
+  --color-blue-dark-opacity16: #1c1f2f29;
+  --color-blue-dark-7: #1c1f2f;
+  --color-red: #ff4747;
+  --color-gray-10: #d9d9d9;
+  --color-orange: #ff5e2d;
+
+  --color-blue-dark-3: #242c39;
+  --color-blue-dark-4: #141421;
+
+  --color-dark-33: #333333;
+  --color-blue-primary: #3a5385;
+  --color-blue-white: #506897;
+  --color-blue-white-2: #e7eaf2;
+  --color-blue-white-3: #aabbdd;
+  --color-blur-black: #2b374e;
+  --color-black-1: #222222;
+  --color-white: #ffffff;
+  --color-gray-1: #777c85;
+  --color-gray-8: #6c757d;
+  --color-white-opacity10: #ffffff0f;
+
+  --color-white-opacity40: #ffffff66;
+
+  --color-white-opacity25: #ffffff25;
+
+  --color-main: #1d2533;
+  --color-blue-dark: #101828;
+  --duration: 0.3s;
+
+  //цвета шрифта
+
+  // основные цвета сайта
+
+  // шрифт
+
+  --font-family-base: "RostelecomBasis", sans-serif;
+}

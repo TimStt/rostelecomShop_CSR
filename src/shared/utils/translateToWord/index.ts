@@ -1,0 +1,1 @@
+export { translateToWord } from "./translateToWord";

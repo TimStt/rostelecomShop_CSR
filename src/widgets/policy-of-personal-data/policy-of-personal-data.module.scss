@@ -1,0 +1,109 @@
+@import "../../shared/other-style/mixins", "../../shared/other-style/adaptive";
+.root {
+  margin-block: 30px 100px;
+  &__breadCrumb {
+    margin-bottom: 40px;
+  }
+  p {
+    @include fluid-text(18, 16);
+  }
+
+  strong {
+    color: var(--color-violet);
+  }
+
+  h2 {
+    margin: 0;
+    text-transform: uppercase;
+    font-size: 24px;
+    font-weight: 700;
+    line-height: 32px;
+    color: var(--color-violet);
+    @include fluid-text(24, 20);
+  }
+  h3 {
+    margin: 0;
+    font-size: 18px;
+    font-weight: 500;
+    line-height: 24px;
+  }
+
+  &__title {
+    font-weight: 700;
+    line-height: 40px;
+    margin-bottom: 50px;
+    @include fluid-text(42, 34);
+  }
+
+  &__list {
+    counter-reset: item;
+    list-style: none;
+    padding-left: 0;
+
+    &__wrapper {
+      counter-increment: item;
+      margin-bottom: 25px;
+      @include flex-gap(13px);
+      align-items: center;
+
+      &::before {
+        content: counter(item) ".";
+
+        font-weight: 700;
+        line-height: 32px;
+        text-transform: uppercase;
+        @include fluid-text(24, 20);
+        color: var(--color-violet);
+      }
+    }
+    &__item {
+      margin-bottom: 60px;
+    }
+  }
+
+  &__sublist {
+    container-name: sublist;
+    counter-reset: subitem;
+    list-style: none;
+    padding-left: 0;
+
+    &__item,
+    &__wrapper {
+      @include flex-gap(13px);
+      align-items: flex-start;
+      counter-increment: subitem;
+
+      &::before {
+        content: counter(item) "." counter(subitem) "";
+        color: var(--color-white);
+        font-size: 18px;
+      }
+      margin-bottom: 10px;
+    }
+
+    &__wrapper {
+      margin-bottom: 20px;
+    }
+
+    &__list {
+      counter-reset: subsubitem;
+      list-style: none;
+      padding-left: 0;
+      margin: 0px 30px 10px 70px;
+
+      li {
+        @include flex-gap(13px);
+        align-items: flex-start;
+        counter-increment: subsubitem;
+        margin-bottom: 10px;
+
+        &::before {
+          content: counter(item) "." counter(subitem) "." counter(subsubitem) "";
+
+          font-size: 18px;
+          color: var(--color-white);
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,95 @@
+@import "../../shared/other-style/mixins", "../../shared/other-style/adaptive";
+
+.root {
+  &__header {
+    @include flex-center-beetwen;
+    margin-bottom: 40px;
+  }
+
+  &__title {
+    font-size: 42px;
+    font-weight: 700;
+    line-height: 44px;
+
+    @include mobile {
+      font-size: 24px;
+      line-height: 32px;
+    }
+  }
+
+  &__wrapper {
+    position: relative;
+    padding-top: 95px;
+    &:before {
+      display: block;
+      width: 100%;
+      @include fluid-text(340, 160);
+      font-weight: 700;
+      line-height: 394px;
+      position: absolute;
+      z-index: -1;
+      top: 0;
+
+      color: var(--color-blue-dark-3);
+    }
+
+    &.new {
+      &:before {
+        content: "Новинки";
+      }
+    }
+    &.hits {
+      &:before {
+        content: "Хиты";
+      }
+    }
+  }
+
+  &__catalog {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    margin-bottom: 40px;
+    gap: 32px;
+    position: relative;
+
+    @include tablet {
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+    }
+
+    @media screen and (max-width: 850px) {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      justify-items: center;
+    }
+
+    @media screen and (max-width: 550px) {
+      gap: 13px;
+    }
+  }
+
+  &__other {
+    cursor: pointer;
+    transition-property: color, fill;
+    transition-duration: var(--duration);
+
+    &:hover {
+      svg {
+        fill: var(--color-light-violet);
+      }
+      span {
+        color: var(--color-light-violet);
+      }
+    }
+    span {
+      font-size: 16px;
+      font-weight: 500;
+      line-height: 24px;
+    }
+
+    svg {
+      margin-left: 13px;
+      width: 14px;
+      height: 14px;
+      fill: var(--color-gray-light);
+    }
+  }
+}

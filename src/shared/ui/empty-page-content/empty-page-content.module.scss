@@ -1,0 +1,70 @@
+@import "../../other-style/mixins";
+.root {
+  --backgroundText: "Зона 404";
+
+  @include flex-gap(15px);
+  margin-block: 25px 43px;
+  &:before {
+    content: var(--backgroundText);
+    display: inline-block;
+    width: 100%;
+    max-width: 884px;
+    @include fluid-text(300, 180);
+    font-weight: 700;
+    line-height: 394px;
+    @include position-center;
+    z-index: -1;
+
+    color: var(--color-blue-dark-3);
+  }
+
+  &__image {
+    width: 100%;
+    height: auto;
+    object-fit: contain;
+  }
+
+  &__block {
+    @include flex-column;
+    width: 100%;
+    justify-content: center;
+    max-width: 884px;
+    align-items: center;
+    position: relative;
+  }
+  &__title {
+    font-size: 42px;
+    font-weight: 700;
+    line-height: 44px;
+    color: var(--color-white-1);
+    margin-bottom: 80px;
+    text-align: center;
+  }
+
+  &__subtitle {
+    font-size: 22px;
+    font-weight: 700;
+    margin-bottom: 20px;
+    color: var(--color-gray-light);
+    text-align: center;
+  }
+
+  &__discription {
+    font-size: 16px;
+    font-weight: 400;
+    color: var(--color-gray-light);
+    margin-bottom: 64px;
+    text-align: center;
+  }
+
+  &__buttons {
+    @include flex-gap(20px);
+
+    a {
+      font-size: 16px;
+      font-weight: 500;
+      width: 230px !important;
+      height: 48px !important;
+    }
+  }
+}

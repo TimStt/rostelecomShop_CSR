@@ -1,0 +1,68 @@
+@import "../../shared/other-style/mixins", "../../shared/other-style/adaptive";
+.root {
+  --fontColorDefoult: var(--color-gray-1);
+
+  background-color: var(--color-blue-dark);
+  max-width: 1920px;
+  width: 100%;
+  height: 900px;
+  @media screen and (max-width: 600px) {
+    min-height: 100dvh;
+    margin: 0;
+  }
+  transition: all 0.5s ease-in-out;
+
+  transform: translateY(-200%);
+  overflow: hidden;
+
+  &[open] {
+    transform: translateY(0%);
+  }
+
+  &__inner {
+    position: relative;
+    padding-block: 58px;
+    // background-image: url(../../../public/menu_bg.png);
+    // background-position: center;
+    // background-repeat: no-repeat;
+    // background-size: cover;
+  }
+
+  &__bg {
+    position: absolute;
+    top: 50%;
+    right: 0;
+    z-index: -1;
+    transform: translate(0%, -50%);
+    @media screen and (max-width: 600px) {
+      max-width: 793px;
+      top: 51%;
+      transform: translate(36%, -50%);
+    }
+  }
+  &__logo {
+    display: block;
+  }
+  &__header {
+    @include flex-center-beetwen;
+    margin-bottom: 150px;
+  }
+
+  &__close {
+    cursor: pointer;
+    padding: 10px;
+    &:hover,
+    &:active {
+      svg {
+        fill: var(--hoverColor);
+      }
+    }
+
+    svg {
+      display: block;
+      width: 24px;
+      height: 24px;
+      fill: var(--color-gray-light);
+    }
+  }
+}

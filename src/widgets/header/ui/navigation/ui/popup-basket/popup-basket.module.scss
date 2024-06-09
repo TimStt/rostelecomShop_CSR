@@ -1,0 +1,167 @@
+@import "../../../../../../shared/other-style/mixins";
+.root {
+  --bgColorPopup: var(--color-blue-dark-2);
+  --widthPopup: 328px;
+
+  transition-property: transform;
+  transform: scale(0);
+  position: absolute;
+  top: 70px;
+  height: 262px;
+  right: 0;
+
+  width: var(--widthPopup);
+
+  transition-duration: var(--duration);
+
+  border-radius: 12px;
+  background-color: var(--bgColorPopup);
+  transform-origin: top right;
+
+  &__empty {
+    @include flex-column;
+    align-items: center;
+    gap: 20px;
+    svg {
+      margin: auto;
+      display: block;
+      width: 40%;
+      height: auto;
+
+      fill: var(--color-gray-light);
+    }
+  }
+
+  &__wrapper {
+    --sizeDecorationTringle: 8px;
+    @include flex-gap(14px);
+    flex-direction: column;
+    align-items: center;
+    position: relative;
+    padding: 12px;
+    height: 100%;
+    &::after {
+      content: "";
+      position: absolute;
+      display: block;
+      top: calc(-1 * var(--sizeDecorationTringle));
+      right: var(--sizeDecorationTringle);
+      border-left: var(--sizeDecorationTringle) solid transparent;
+      border-right: var(--sizeDecorationTringle) solid transparent;
+      border-bottom: var(--sizeDecorationTringle) solid var(--bgColorPopup);
+    }
+  }
+  .header {
+    @include flex-center-beetwen;
+
+    width: 100%;
+
+    &__title {
+      font-weight: 700;
+      line-height: 20px;
+      font-size: 16px;
+    }
+    &__close {
+      cursor: pointer;
+      @include inline-flex-center;
+      @include square(24px);
+      border-radius: 50%;
+      background-color: var(--color-white-opacity6);
+      transition-property: background-color;
+      transition-duration: var(--duration);
+      @include hover-btn(var(--hoverColor));
+
+      svg {
+        display: block;
+        width: 15px;
+        height: 15px;
+        fill: var(--color-gray-light);
+      }
+    }
+  }
+  &.isOpen {
+    transform: scaleY(1);
+  }
+}
+
+.root__link {
+  position: relative;
+  &.isBasketNoteEmpty::after {
+    content: "";
+    position: absolute;
+    top: 9px;
+    right: 2px;
+    width: 8px;
+    height: 8px;
+    background-color: #ff0c0c;
+    border-radius: 50%;
+  }
+}
+
+.result {
+  display: flex;
+  flex-wrap: wrap;
+  &__summary {
+    font-size: 16px;
+
+    line-height: 24px;
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    margin-bottom: 12px;
+
+    &__text {
+      font-weight: 400;
+    }
+
+    &__price {
+      font-weight: 500;
+    }
+  }
+
+  &__button {
+    width: 100% !important;
+    height: 32px !important;
+  }
+}
+
+.list {
+  border-block: 1px solid var(--color-gray-5);
+  @include flex-column;
+  height: 100%;
+  width: 100%;
+  max-height: 120px;
+  overflow-y: auto;
+  scroll-snap-type: y mandatory;
+
+  &__item {
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+    scroll-snap-align: start;
+    column-gap: 13px;
+    padding-block: 11px;
+  }
+
+  &::-webkit-scrollbar {
+    width: 8px;
+  }
+
+  &::-webkit-scrollbar-thumb {
+    /* плашка-бегунок */
+    height: 50px;
+    border-radius: 10px;
+    transition-property: background;
+    transition-duration: var(--duration);
+    background-color: var(--color-light-violet);
+    &:hover {
+      background: var(--color-violet);
+    }
+  }
+  &::-webkit-scrollbar-track {
+    /* фон */
+    background-color: transparent; /* фон */
+  }
+  &.isEmpty {
+    max-height: 100%;
+  }
+}

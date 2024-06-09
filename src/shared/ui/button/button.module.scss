@@ -1,0 +1,65 @@
+@import "../../other-style/mixins", "../../other-style/adaptive";
+
+.root {
+  --defoultButtonRadius: 32px;
+  --defoultButtonFontWeight: 500;
+
+  --buttonSmallMinWidth: 140px;
+  --buttonSmallHeight: 32px;
+
+  --buttonMediumMinWidth: 120px;
+  --buttonMediumHeight: 48px;
+
+  --buttonLargeMinWidth: 140px;
+  --buttonLargeHeight: 56px;
+
+  --buttonHeight: 0;
+  --buttonDuration: var(--duration);
+
+  --borderColorOutlineButton: var(--color-violet);
+  --bgHoverOutlineButton: var(--color-light-viole-opacity10);
+  --bgPrimaryButton: var(--color-light-violet);
+  --bgHoverPrimaryButton: var(--color-violet);
+
+  @include reset-button;
+  @include inline-flex-center;
+
+  position: relative;
+
+  font-weight: var(--defoultButtonFontWeight);
+  transition: background-color var(--buttonDuration),
+    color var(--buttonDuration), border var(--buttonDuration);
+  border-radius: var(--defoultButtonRadius);
+  @include hover-btn(var(--hoverButtonBg), var(--activeButtonBg));
+
+  &.primary {
+    background-color: var(--bgPrimaryButton);
+    @include hover-btn(var(--bgHoverPrimaryButton));
+
+    color: var(--color-white);
+  }
+
+  &.outline {
+    @include hover-btn(var(--bgHoverOutlineButton)) {
+      border: 2px solid var(--borderColorOutlineButton);
+    }
+    border: 2px solid var(--borderColorOutlineButton);
+  }
+
+  &.small {
+    width: var(--buttonSmallMinWidth);
+    height: var(--buttonSmallHeight);
+    font-size: 14px;
+    line-height: 20px;
+  }
+
+  &.medium {
+    width: var(--buttonMediumMinWidth);
+    height: var(--buttonMediumHeight);
+  }
+
+  &.large {
+    width: var(--buttonLargeMinWidth);
+    height: var(--buttonLargeHeight);
+  }
+}

@@ -1,0 +1,59 @@
+@import "../../../../../../shared/other-style/mixins";
+.root {
+  --bgColorPopup: var(--color-blue-dark-2);
+  --widthPopup: 328px;
+
+  transition-property: transform;
+  transform: scale(0);
+  position: absolute;
+  top: 70px;
+
+  right: 0;
+
+  transition-duration: var(--duration);
+
+  border-radius: 12px;
+  background-color: var(--bgColorPopup);
+  transform-origin: top right;
+
+  &__wrapper {
+    --sizeDecorationTringle: 8px;
+    @include flex-gap(14px);
+    flex-direction: column;
+    padding: 10px;
+    position: relative;
+
+    height: 100%;
+    &::after {
+      content: "";
+      position: absolute;
+      display: block;
+      top: calc(-1 * var(--sizeDecorationTringle));
+      right: var(--sizeDecorationTringle);
+      border-left: var(--sizeDecorationTringle) solid transparent;
+      border-right: var(--sizeDecorationTringle) solid transparent;
+      border-bottom: var(--sizeDecorationTringle) solid var(--bgColorPopup);
+    }
+  }
+
+  &.isOpen {
+    transform: scaleY(1);
+  }
+
+  &__text {
+    color: var(--color-gray-light);
+    cursor: pointer;
+    transition-property: color;
+    transition-duration: var(--duration);
+    &:hover {
+      color: var(--color-light-violet);
+    }
+  }
+}
+
+.spinner {
+  display: block;
+  position: relative !important;
+  left: 0 !important;
+  top: 0 !important;
+}

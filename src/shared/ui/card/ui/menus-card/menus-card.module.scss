@@ -1,0 +1,112 @@
+@import "../../../../../shared/other-style/mixins",
+  "../../../../../shared/other-style/adaptive";
+
+.root {
+  @include flex-gap(12px);
+  flex-direction: column;
+  position: absolute;
+  align-items: end;
+  top: 16px;
+  opacity: 0;
+  transition-property: opacity;
+  transition-duration: var(--duration);
+  right: 16px;
+  --widthPopup: 200px;
+
+  @media screen and (max-width: 550px) {
+    opacity: 1;
+    --widthPopup: 180px;
+  }
+
+  &__item {
+    display: flex;
+    align-items: center;
+    flex-direction: row-reverse;
+
+    width: max-content;
+    height: 32px;
+
+    @media screen and (max-width: 550px) {
+      &:last-child {
+        display: none;
+      }
+    }
+
+    &:hover {
+      gap: 15px;
+    }
+
+    a:hover + .root__popup {
+      span {
+        text-wrap: normal;
+      }
+      visibility: visible;
+      transform: scale(1);
+      width: var(--widthPopup);
+      height: 32px;
+    }
+  }
+  &__popup {
+    background-color: var(--bgColorPopup);
+    --sizeDecorationTringle: 8px;
+    width: 0px;
+    height: 0px;
+    visibility: hidden;
+
+    transition-property: transform width height, visibility;
+    transform: scale(0);
+    pointer-events: none;
+
+    transition-duration: var(--duration);
+    border-radius: 12px;
+
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 20px;
+    box-shadow: 0px 32px 32px 0px rgba(0, 0, 0, 0.2),
+      0px 0px 32px 0px rgba(0, 0, 0, 0.1);
+    transform-origin: center right;
+
+    &__wrapper {
+      position: relative;
+      padding: 10px 12px;
+      width: 100%;
+      height: 100%;
+      @include inline-flex-center;
+      &::after {
+        content: "";
+        position: absolute;
+        display: block;
+        transform: translateY(-50%);
+        top: 50%;
+        right: calc(-1 * var(--sizeDecorationTringle));
+        border-bottom: var(--sizeDecorationTringle) solid transparent;
+        border-top: var(--sizeDecorationTringle) solid transparent;
+        border-left: var(--sizeDecorationTringle) solid var(--bgColorPopup);
+      }
+    }
+
+    span {
+      text-wrap: nowrap;
+    }
+  }
+
+  button {
+    @include square(32px);
+    border-radius: 50%;
+    @include inline-flex-center;
+    background-color: var(--color-main);
+  }
+
+  svg {
+    display: block;
+
+    width: 24px;
+    height: 24px;
+    fill: var(--color-gray-light);
+
+    &:hover {
+      fill: var(--color-emerald);
+    }
+  }
+}

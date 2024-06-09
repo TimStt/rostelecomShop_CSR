@@ -1,0 +1,64 @@
+@import "../../other-style/mixins";
+@import "../../other-style/adaptive";
+
+.root {
+  --hoverColor: var(--color-light-violet);
+  --boxShadowModal: 0 32px 32px 0 rgba(0, 0, 0, 0.2),
+    0 0 32px 0 rgba(0, 0, 0, 0.1);
+  width: 992px;
+
+  transition-property: top, left, transform;
+  transition-duration: var(--duration);
+
+  background: var(--color-blue-dark-3);
+  display: block;
+  padding: 32px;
+
+  border: none;
+
+  &::backdrop {
+    opacity: 0.9;
+    background-color: rgb(9, 9, 22);
+  }
+
+  &__header {
+    @include flex-center-beetwen;
+    margin-bottom: 30px;
+
+    h2 {
+      font-size: 32px;
+      color: var(--color-white-opacity90);
+    }
+  }
+
+  &__close {
+    border-radius: 50%;
+    @include square(30px);
+
+    transition-property: background-color;
+    transition-duration: var(--duration);
+    svg {
+      display: block;
+      margin: auto;
+      width: 24px;
+      height: 24px;
+      fill: var(--color-gray-light);
+    }
+
+    &:hover {
+      background-color: var(--color-violet);
+    }
+  }
+
+  &__addToBasket {
+    min-width: 143px !important;
+    transition-property: opacity;
+    transition-duration: var(--duration);
+
+    &:disabled {
+      opacity: 0.5;
+      pointer-events: none;
+      cursor: not-allowed;
+    }
+  }
+}

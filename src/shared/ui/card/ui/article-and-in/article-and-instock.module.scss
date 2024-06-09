@@ -1,0 +1,43 @@
+@import "../../../../../shared/other-style/mixins",
+  "../../../../../shared/other-style/adaptive";
+
+.root {
+  @include flex-gap(8px);
+
+  &__article {
+    color: var(--color-gray-6);
+    font-size: 12px;
+    font-weight: 400;
+    line-height: 16px;
+  }
+
+  &__state {
+    @include flex-gap(4px);
+    align-items: center;
+    font-size: 12px;
+    font-weight: 400;
+    line-height: 16px;
+    color: var(--color-green);
+
+    @media screen and (max-width: 550px) {
+      font-size: 10px;
+      line-height: 16px;
+    }
+
+    &::before {
+      content: "";
+      display: block;
+      border-radius: 50%;
+      width: 4px;
+      height: 4px;
+      background-color: var(--color-green);
+    }
+
+    &.isNotAvailable {
+      color: var(--color-red);
+      &::before {
+        background-color: var(--color-red);
+      }
+    }
+  }
+}

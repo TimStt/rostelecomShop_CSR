@@ -1,0 +1,83 @@
+@import "../../shared/other-style/mixins";
+.root {
+  --boxShadow: 0px -2px 4px 0px rgba(0, 0, 0, 0.2),
+    0px 0px 8px 0px rgba(0, 0, 0, 0.1);
+
+  background-color: var(--color-blue-dark);
+  margin: 0;
+  margin-top: auto;
+
+  bottom: 0;
+  width: 100dvw;
+  max-width: 100dvw;
+  box-shadow: var(--boxShadow);
+
+  &__wrapper {
+    padding-block: 40px;
+    display: flex;
+
+    justify-content: space-between;
+  }
+
+  &__text {
+    font-size: 16px;
+    font-weight: 400;
+    color: var(--color-gray-6);
+    text-align: left;
+    a {
+      color: var(--color-light-violet);
+    }
+  }
+
+  &__accept {
+    width: 137px !important;
+    height: 48px !important;
+  }
+
+  &__btns {
+    @include flex-gap(33px);
+    align-items: start;
+  }
+
+  &__close {
+    @include square(30px);
+    @include inline-flex-center;
+    border-radius: 50%;
+    svg {
+      display: block;
+      width: 20px;
+      height: 20px;
+      fill: var(--color-white);
+    }
+
+    &:hover {
+      background-color: var(--color-light-violet);
+    }
+  }
+}
+
+@media (max-width: 560px) {
+  .root {
+    &__wrapper {
+      position: relative;
+      padding-block: 20px;
+      flex-direction: column;
+      align-items: stretch;
+    }
+
+    &__text {
+      font-size: 15px;
+      margin-bottom: 20px;
+    }
+
+    &__accept {
+      width: calc(100% + 40px);
+    }
+
+    &__close {
+      position: absolute;
+      top: 0;
+      right: 0;
+    }
+  }
+}

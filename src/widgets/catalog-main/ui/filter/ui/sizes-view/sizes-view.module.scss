@@ -1,0 +1,30 @@
+@import "../../../../../../shared/other-style/mixins";
+
+.root {
+  @include flex-center;
+  flex-wrap: wrap;
+  gap: 12px;
+
+  &__item {
+    border-radius: 24px;
+    background-color: var(--color-white-opacity10);
+    padding: 6px 12px;
+  }
+
+  &__button {
+    @include flex-gap(11px);
+    align-items: center;
+    span {
+      color: var(--color-gray-light);
+      font-size: 14px;
+      font-weight: 400;
+      line-height: 20px;
+    }
+    svg {
+      display: block;
+      height: 15px;
+      width: 15px;
+      fill: var(--color-white-opacity40);
+    }
+  }
+}

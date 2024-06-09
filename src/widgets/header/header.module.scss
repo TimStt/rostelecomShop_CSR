@@ -1,0 +1,91 @@
+@import "../../shared/other-style/mixins", "../../shared/other-style/adaptive";
+
+.root {
+  --sizeIcon: 24px;
+  --hoverColor: var(--color-violet);
+  height: var(--height-header);
+
+  box-shadow: 0px 2px 4px 0px rgba(0, 0, 0, 0.2),
+    0px 0px 8px 0px rgba(0, 0, 0, 0.1);
+
+  .menu-button {
+    @include flex-gap(14px);
+    align-items: center;
+    cursor: pointer;
+    @media screen and (max-width: 750px) {
+      display: none;
+    }
+    &:hover,
+    &:active {
+      span {
+        color: var(--hoverColor);
+      }
+      svg {
+        fill: var(--hoverColor);
+      }
+    }
+
+    span {
+      $maxFontSize: 24;
+      $minFontSize: 18;
+      @include fluid-text($maxFontSize, $minFontSize);
+
+      color: var(--color-gray-light);
+
+      font-weight: 500;
+      line-height: 32px;
+    }
+  }
+  .icon-block {
+    cursor: pointer;
+    display: block;
+    width: var(--sizeIcon);
+    height: var(--sizeIcon);
+
+    svg {
+      display: block;
+      width: 100%;
+      height: 100%;
+      fill: var(--color-gray-light);
+    }
+    &:hover,
+    &:active {
+      svg {
+        fill: var(--hoverColor);
+      }
+    }
+  }
+
+  .inner {
+    @include flex-center-beetwen;
+    height: 100%;
+  }
+
+  .list {
+    @include flex-gap(14px);
+    align-items: center;
+  }
+
+  // .basket-quntity {
+  //   @include inline-flex-center;
+
+  //   position: absolute;
+  //   left: calc(50% + 10px);
+  //   top: 0;
+  //   width: 20px;
+
+  //   height: 20px;
+  //   background-color: var(--color-blue-primary);
+  //   color: var(--color-white);
+  //   border-radius: 20px;
+
+  //   font-size: 12px;
+  //   font-weight: 700;
+
+  //   line-height: 110.5%;
+
+  //   white-space: nowrap;
+  //   overflow: hidden;
+  //   text-overflow: ellipsis;
+  // }
+}

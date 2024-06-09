@@ -1,0 +1,41 @@
+@import "../../other-style/mixins";
+
+.root {
+  --spinnerDuration: 1.2s;
+  --spinnerColor: #333;
+  --sizeDotes: 1rem;
+  --gap: 10px;
+
+  @include flex-gap(var(--gap));
+  text-align: center;
+
+  > div {
+    width: var(--sizeDotes);
+    height: var(--sizeDotes);
+    background-color: var(--spinnerColor);
+
+    border-radius: 100%;
+    display: inline-block;
+    animation: bouncedelay var(--spinnerDuration) infinite ease-in-out;
+    animation-fill-mode: both;
+
+    &:nth-child(2n) {
+      animation-delay: calc(var(--spinnerDuration) * 0.1);
+    }
+
+    &:nth-child(3n) {
+      animation-delay: calc(var(--spinnerDuration) * 0.2);
+    }
+  }
+}
+
+@keyframes bouncedelay {
+  0%,
+  80%,
+  100% {
+    transform: scale(0);
+  }
+  40% {
+    transform: scale(1);
+  }
+}

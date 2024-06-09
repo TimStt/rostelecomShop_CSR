@@ -1,0 +1,12 @@
+@import "../../other-style/mixins";
+.root {
+  display: block;
+  padding: 0;
+
+  border: none;
+
+  &::backdrop {
+    opacity: 0.9;
+    background-color: rgb(9, 9, 22);
+  }
+}
