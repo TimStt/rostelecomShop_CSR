@@ -49,7 +49,7 @@ export const NewAndHitsGoods = () => {
           </Link>
         </header>
         <div className={style.root__catalog}>
-          {!loading ? (
+          {!loading || !!isGoods?.length ? (
             <CatalogCards goods={isGoods?.slice(0, 4)} />
           ) : (
             Array(4)
