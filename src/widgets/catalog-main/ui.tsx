@@ -84,7 +84,7 @@ const CatalogMain = () => {
         ) : (
           <>
             <>
-              {isGoods.length ? (
+              {isGoods?.length ? (
                 <>
                   <div className={style.root__cards}>
                     {isGoods.map((product) => (

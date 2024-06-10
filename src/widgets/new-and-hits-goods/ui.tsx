@@ -31,7 +31,7 @@ export const NewAndHitsGoods = () => {
         </header>
         <div className={style.root__catalog}>
           {!loading ? (
-            <CatalogCards goods={isGoods.slice(4, 8)} />
+            <CatalogCards goods={isGoods?.slice(4, 8)} />
           ) : (
             Array(4)
               .fill(0)
@@ -50,7 +50,7 @@ export const NewAndHitsGoods = () => {
         </header>
         <div className={style.root__catalog}>
           {!loading ? (
-            <CatalogCards goods={isGoods.slice(0, 4)} />
+            <CatalogCards goods={isGoods?.slice(0, 4)} />
           ) : (
             Array(4)
               .fill(0)
