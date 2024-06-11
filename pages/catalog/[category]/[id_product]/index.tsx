@@ -8,26 +8,26 @@ import { GetServerSideProps } from "next";
 
 export default ProductPage;
 
-export const getServerSideProps: GetServerSideProps =
-  wrapper.getServerSideProps(({ dispatch }) => async (context) => {
-    try {
-      // const limitGoods = 12;
-      const { category, id_product } =
-        context.params as unknown as IParamsToGetProduct;
+// export const getServerSideProps: GetServerSideProps =
+//   wrapper.getServerSideProps(({ dispatch }) => async (context) => {
+//     try {
+//       // const limitGoods = 12;
+//       const { category, id_product } =
+//         context.params as unknown as IParamsToGetProduct;
 
-      const { data: product } = await apiInstance.get(
-        `/api/goods/one-product?category=${category}&id_product=${id_product}`
-      );
+//       const { data: product } = await apiInstance.get(
+//         `/api/goods/one-product?category=${category}&id_product=${id_product}`
+//       );
 
-      dispatch(setCurrentProduct(product));
+//       dispatch(setCurrentProduct(product));
 
-      return {
-        props: {},
-      };
-    } catch (error) {
-      console.error(error);
-      return {
-        props: {},
-      };
-    }
-  });
+//       return {
+//         props: {},
+//       };
+//     } catch (error) {
+//       console.error(error);
+//       return {
+//         props: {},
+//       };
+//     }
+//   });
