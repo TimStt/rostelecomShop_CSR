@@ -1543,3 +1543,17 @@
 {"level":"info","message":{"$and":[{"sizes":{"$elemMatch":{"l":true}}}]},"timestamp":"2024-06-10T06:09:52.794Z"}
 {"level":"info","message":"type","timestamp":"2024-06-10T06:11:48.701Z"}
 {"level":"info","message":{"category":{"$in":["clothes"]}},"timestamp":"2024-06-10T06:11:48.701Z"}
+{"level":"info","message":"type","timestamp":"2024-06-10T06:26:25.917Z"}
+{"level":"info","message":{"$and":[{"sizes":{"$elemMatch":{"l":true}}}]},"timestamp":"2024-06-10T06:26:25.924Z"}
+{"level":"info","message":"type","timestamp":"2024-06-10T06:26:30.661Z"}
+{"level":"info","message":{"$and":[{"sizes":{"$elemMatch":{"l":true}}}],"category":{"$in":["clothes"]}},"timestamp":"2024-06-10T06:26:30.663Z"}
+{"level":"info","message":"type","timestamp":"2024-06-10T06:26:31.434Z"}
+{"level":"info","message":{"$and":[{"sizes":{"$elemMatch":{"l":true}}}],"category":{"$in":["clothes"]}},"timestamp":"2024-06-10T06:26:31.435Z"}
+{"level":"info","message":"type","timestamp":"2024-06-10T06:26:32.595Z"}
+{"level":"info","message":{"category":{"$in":["clothes"]}},"timestamp":"2024-06-10T06:26:32.595Z"}
+{"level":"info","message":"type","timestamp":"2024-06-10T06:26:34.752Z"}
+{"level":"info","message":{"category":{"$in":["clothes"]}},"timestamp":"2024-06-10T06:26:34.752Z"}
+{"level":"info","message":"type","timestamp":"2024-06-10T06:26:39.190Z"}
+{"level":"info","message":{"category":{"$in":["clothes"]}},"timestamp":"2024-06-10T06:26:39.191Z"}
+{"level":"info","message":"type","timestamp":"2024-06-10T07:33:45.865Z"}
+{"level":"info","message":{"category":{"$in":["clothes"]}},"timestamp":"2024-06-10T07:33:45.867Z"}

@@ -1,4 +1,4 @@
-import Card from "@/shared/ui/card/ui";
+"use client";
 import React, { useEffect } from "react";
 import style from "./new-and-hits-goods.module.scss";
 import cls from "classnames";

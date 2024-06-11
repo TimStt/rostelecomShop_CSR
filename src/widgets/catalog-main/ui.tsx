@@ -1,26 +1,18 @@
 "use client";
 import React, { use, useEffect, useRef, useState } from "react";
 import cls from "classnames";
-
 import Filter from "./ui/filter";
 import { Card } from "@/shared/ui/card";
-// import CatalogCards from "@/features/catalog-cards";
 import { BreadCrumb } from "@/shared/ui/breadcrumbs";
 import { useDispatch, useSelector } from "react-redux";
 import { getCatalogProduct, selectIsCatalag } from "./store/slice";
-
 import Pagination from "./ui/pagination";
-
 import SkeletonCard from "./ui/skeleton-card/ui";
 import { categories } from "@/shared/routing";
-
 import TransitionWrapper from "@/shared/ui/transition-wrapper/ui";
-
 import style from "./catalog-main.module.scss";
-
 import { PulseLoader } from "@/shared/ui/pulse-loader";
 import EmptyPageContent from "@/shared/ui/empty-page-content/ui";
-
 import { useUrlParams } from "@/shared/utils/url";
 import { useRouter } from "next/router";
 
