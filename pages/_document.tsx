@@ -6,7 +6,7 @@ export default function Document() {
       <Head>
         <meta
           name="google-site-verification"
-          content="K5UeGmyszUl2tshFZOyaxHD0U_rfJtkKHIqxwsHQ5gI"
+          content="0yxsSQLkUIyc5sqOLhMwZarBSgcFqKhmlCuQE3AU_K4"
         />
       </Head>
 
