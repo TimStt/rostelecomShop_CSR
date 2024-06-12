@@ -8,6 +8,7 @@ export default function Document() {
           name="google-site-verification"
           content="0yxsSQLkUIyc5sqOLhMwZarBSgcFqKhmlCuQE3AU_K4"
         />
+        <meta name="yandex-verification" content="d5c7af2aa06ce985" />
       </Head>
 
       <body>
