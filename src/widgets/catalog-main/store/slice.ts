@@ -52,16 +52,6 @@ export const goodsCatalogSlice = createSlice({
     },
   },
   extraReducers: (builder) => {
-    builder.addCase<typeof HYDRATE, PayloadAction<RootState, typeof HYDRATE>>(
-      HYDRATE,
-      (state, { payload }) => {
-        if (payload.goodsCatalog) {
-          state.isGoods = payload.goodsCatalog.isGoods;
-          state.count = payload.goodsCatalog.count;
-          state.loading = payload.goodsCatalog.loading;
-        }
-      }
-    );
     builder
       .addCase(getCatalogProduct.pending, (state) => {
         state.loading = true;
@@ -75,11 +65,6 @@ export const goodsCatalogSlice = createSlice({
         state.loading = false;
         state.isGoods = [];
       });
-    // .addCase(REHYDRATE, (state, action) => {
-
-    //     state.isGoods = action.payload.goodsHitsAndNew.isGoods;
-
-    // });
   },
 });
 

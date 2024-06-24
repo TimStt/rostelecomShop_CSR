@@ -5,19 +5,28 @@ import cls from "classnames";
 import Link from "next/link";
 import { paths } from "@/shared/routing";
 import Icon from "@/shared/ui/icon";
-import { getHitsAndNew, selectIsHitsAndNew } from "./store/slice";
+import {
+  getHitsAndNew,
+  selectGoodsIsHitsAndNew,
+  selectLoadingHitsAndNew,
+} from "./store/slice";
 import { useDispatch, useSelector } from "react-redux";
 import CatalogCards from "../../features/catalog-cards";
 import SkeletonCard from "../catalog-main/ui/skeleton-card/ui";
 // import CatalogCards from "../../features/catalog-cards";
 
 export const NewAndHitsGoods = () => {
-  const { isGoods, loading } = useSelector(selectIsHitsAndNew);
+  const isGoods = useSelector(selectGoodsIsHitsAndNew);
+  const loading = useSelector(selectLoadingHitsAndNew);
   const dispatch = useDispatch<AppDispatch>();
 
   useEffect(() => {
-    dispatch(getHitsAndNew());
+    const getGoods = async () => {
+      await dispatch(getHitsAndNew());
+    };
+    getGoods();
   }, [dispatch]);
+  console.log("isGoods", isGoods);
 
   return (
     <section className={cls(style.root, "container")}>
@@ -30,7 +39,7 @@ export const NewAndHitsGoods = () => {
           </Link>
         </header>
         <div className={style.root__catalog}>
-          {!loading || !!isGoods?.length ? (
+          {!loading && !!isGoods.length ? (
             <CatalogCards goods={isGoods?.slice(4, 8)} />
           ) : (
             Array(4)

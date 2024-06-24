@@ -1557,3 +1557,35 @@
 {"level":"info","message":{"category":{"$in":["clothes"]}},"timestamp":"2024-06-10T06:26:39.191Z"}
 {"level":"info","message":"type","timestamp":"2024-06-10T07:33:45.865Z"}
 {"level":"info","message":{"category":{"$in":["clothes"]}},"timestamp":"2024-06-10T07:33:45.867Z"}
+{"level":"info","message":"Refresh token request","timestamp":"2024-06-24T18:09:32.237Z"}
+{"level":"info","message":"type","timestamp":"2024-06-24T18:09:41.024Z"}
+{"level":"info","message":{},"timestamp":"2024-06-24T18:09:41.036Z"}
+{"level":"info","message":"type","timestamp":"2024-06-24T18:12:48.966Z"}
+{"level":"info","message":{},"timestamp":"2024-06-24T18:12:48.973Z"}
+{"level":"info","message":"type","timestamp":"2024-06-24T18:16:50.226Z"}
+{"level":"info","message":{},"timestamp":"2024-06-24T18:16:50.232Z"}
+{"level":"info","message":"Refresh token request","timestamp":"2024-06-24T18:19:53.743Z"}
+{"level":"info","message":"type","timestamp":"2024-06-24T18:20:22.606Z"}
+{"level":"info","message":{},"timestamp":"2024-06-24T18:20:22.607Z"}
+{"level":"info","message":"type","timestamp":"2024-06-24T18:22:14.571Z"}
+{"level":"info","message":{},"timestamp":"2024-06-24T18:22:14.575Z"}
+{"level":"info","message":"type","timestamp":"2024-06-24T18:22:24.050Z"}
+{"level":"info","message":{"category":{"$in":["souvenirs"]}},"timestamp":"2024-06-24T18:22:24.054Z"}
+{"level":"info","message":"type","timestamp":"2024-06-24T18:22:28.023Z"}
+{"level":"info","message":{},"timestamp":"2024-06-24T18:22:28.025Z"}
+{"level":"info","message":"type","timestamp":"2024-06-24T18:25:19.402Z"}
+{"level":"info","message":{},"timestamp":"2024-06-24T18:25:19.406Z"}
+{"level":"info","message":"type","timestamp":"2024-06-24T18:26:42.927Z"}
+{"level":"info","message":{},"timestamp":"2024-06-24T18:26:42.932Z"}
+{"level":"info","message":"type","timestamp":"2024-06-24T18:28:30.231Z"}
+{"level":"info","message":{},"timestamp":"2024-06-24T18:28:30.234Z"}
+{"level":"info","message":"Refresh token request","timestamp":"2024-06-24T18:30:59.376Z"}
+{"level":"info","message":"type","timestamp":"2024-06-24T18:31:13.518Z"}
+{"level":"info","message":{},"timestamp":"2024-06-24T18:31:13.519Z"}
+{"level":"info","message":"type","timestamp":"2024-06-24T18:38:20.210Z"}
+{"level":"info","message":{},"timestamp":"2024-06-24T18:38:20.220Z"}
+{"level":"info","message":"type","timestamp":"2024-06-24T18:39:29.020Z"}
+{"level":"info","message":{},"timestamp":"2024-06-24T18:39:29.042Z"}
+{"level":"info","message":"type","timestamp":"2024-06-24T18:39:29.098Z"}
+{"level":"info","message":{},"timestamp":"2024-06-24T18:39:29.124Z"}
+{"level":"info","message":"Refresh token request","timestamp":"2024-06-24T18:41:08.504Z"}

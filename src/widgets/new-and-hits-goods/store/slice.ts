@@ -5,7 +5,7 @@ import { HYDRATE } from "next-redux-wrapper";
 import { REHYDRATE } from "redux-persist";
 
 export const getHitsAndNew = createAsyncThunk(
-  "goods/fetchGoodsGet",
+  "hitsAndNew/fetchGoodsGet",
   async () => {
     const { data: goodsHits } = await apiInstance.get("/api/goods/hits");
     const { data: goodsNew } = await apiInstance.get("/api/goods/new");
@@ -15,12 +15,12 @@ export const getHitsAndNew = createAsyncThunk(
 );
 
 export interface typeState {
-  isGoods: IGoodsList | [];
+  productData: IGoodsList | [];
   loading: boolean;
 }
 
 const initialState: typeState = {
-  isGoods: [],
+  productData: [],
   loading: false,
 };
 
@@ -29,40 +29,31 @@ export const goodsHitsAndNewSlice = createSlice({
   initialState,
   reducers: {
     getGoodsSave: (state, action: PayloadAction<IGoodsList>) => {
-      state.isGoods = action.payload;
+      state.productData = action.payload;
     },
   },
   extraReducers: (builder) => {
     builder
-      .addCase<typeof HYDRATE, PayloadAction<RootState, typeof HYDRATE>>(
-        HYDRATE,
-        (state, { payload }) => {
-          if (payload.goodsHitsAndNew) {
-            state.isGoods = payload.goodsHitsAndNew.isGoods;
-          }
-        }
-      )
+
       .addCase(getHitsAndNew.pending, (state) => {
         state.loading = true;
       })
       .addCase(getHitsAndNew.fulfilled, (state, action) => {
         state.loading = false;
-        state.isGoods = action.payload;
+        state.productData = action.payload;
       })
       .addCase(getHitsAndNew.rejected, (state) => {
         state.loading = false;
-        state.isGoods = [];
+        state.productData = [];
       });
-
-    // .addCase(REHYDRATE, (state, action) => {
-
-    //     state.isGoods = action.payload.goodsHitsAndNew.isGoods;
-
-    // });
   },
 });
 
-export const selectIsHitsAndNew = (state: RootState) => state.goodsHitsAndNew;
+export const selectGoodsIsHitsAndNew = (state: RootState) =>
+  state.goodsHitsAndNew.productData;
+
+export const selectLoadingHitsAndNew = (state: RootState) =>
+  state.goodsHitsAndNew.loading;
 
 export const { getGoodsSave } = goodsHitsAndNewSlice.actions;
 export default goodsHitsAndNewSlice.reducer;
